@@ -11,7 +11,7 @@ def run(iam_token, folder_id, user_text):
     # Указываем тип модели
     data["modelUri"] = f"gpt://{folder_id}/yandexgpt/latest"
     # Настраиваем опции
-    data["completionOptions"] = {"temperature": 0.3, "maxTokens": 1000}
+    data["completionOptions"] = {"temperature": 0.8, "maxTokens": 1000}
     # Указываем контекст для модели
     data["messages"] = [
         {
