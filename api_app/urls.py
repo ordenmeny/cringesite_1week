@@ -6,4 +6,5 @@ urlpatterns = [
     path('create-joke/', JokeCreateAPIView.as_view()),  # POST
     path('list-jokes/', ListJokes.as_view()),  # GET
     path('retrieve/<int:pk>/', JokeRetrieveAPIView.as_view()),  # GET, DELETE
+    path('drf-auth/', include('rest_framework.urls')),
 ]
