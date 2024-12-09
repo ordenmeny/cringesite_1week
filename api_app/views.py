@@ -3,7 +3,6 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView, ListCreateAPIView, RetrieveDestroyAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
 from .models import *
 from .serializers import *
 from .generate_joke import TOKEN, FOLDER_ID, run
@@ -53,3 +52,4 @@ class JokeRetrieveAPIView(RetrieveDestroyAPIView):
     # 2) DELETE: Удаление шутки
     queryset = JokeModel.objects.all()
     serializer_class = JokeSerializer
+    permission_classes = ()
