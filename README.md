@@ -43,7 +43,7 @@ python manage.py runserver
 The project will be accessible at:
 http://127.0.0.1:8000/
 
-### 6. Using the API
+### 6. Using the API (basic functionality)
 Available Endpoints:
 1) Create a Joke \
 URL: /api/create-joke/ \
@@ -65,6 +65,57 @@ GET: Retrieve details of a specific joke by ID. \
 DELETE: Delete a specific joke by ID. \
 Description: Use \<int:pk> to specify the joke's unique ID.
 
+---
 
+
+## API for authentication
+#### URL Prefix
+`api-auth/`
+
+
+### 1. Authorization
+
+**Endpoint:**  
+`POST /auth/token/login/`
+
+**Request Parameters:**  
+- `username=<username>`  
+- `password=<password>`
+
+**Description:**  
+Retrieve a token. The token should be saved on the client side.
+
+---
+
+### 2. Create a new user
+
+**Endpoint:**  
+`POST /auth/users/`
+
+**Request Parameters:**  
+- `username=<username>`  
+- `password=<password>`
+- `email=<email>`
+
+---
+
+### 3. Retrieve All Users 
+(for admin only)
+
+**Endpoint:**  
+`GET /auth/users/`
+
+**Headers:**  
+`Authorization: Token <token>`
+
+---
+
+### 4. Retrieve Current User
+
+**Endpoint:**  
+`GET /auth/users/me/`
+
+**Headers:**  
+`Authorization: Token <token>`
 
 
