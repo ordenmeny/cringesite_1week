@@ -12,13 +12,6 @@ class ListJokes(ListAPIView):
     serializer_class = JokeSerializer
     queryset = JokeModel.objects.all()
 
-    # def get(self, request):
-    #     jokes = JokeModel.objects.all()
-    #     serializer = JokeSerializer(jokes, many=True)
-    #
-    #     return Response(serializer.data, status=status.HTTP_200_OK)
-
-
 
 class JokeCreateAPIView(APIView):
     # Генерация шутки по POST-запросу.
@@ -26,7 +19,13 @@ class JokeCreateAPIView(APIView):
 
     def post(self, request, *args, **kwargs):
         topic_input = str(request.data["topic_input"])  # request
-        run_res = run(TOKEN, FOLDER_ID, topic_input)
+
+        if len(topic_input) <= 2:
+            topic_input = "Придумай любую шутку"
+            run_res = run(TOKEN, FOLDER_ID, topic_input)
+        else:
+            run_res = run(TOKEN, FOLDER_ID, topic_input)
+
         gpt_response_text = str(run_res["result"]["alternatives"][0]["message"]["text"])  # ответ
 
         joke_data = {
